@@ -11,8 +11,29 @@ public class CalenderTest {
         int inputOfDay = 25;
         int week = 7;
         int todayInclude = 1;
-        Calendar[] cal = Calendar.values();
-        String expectedMonday = String.valueOf(cal[(inputOfDay % week) - todayInclude]);
+
+        Calendar[] calendar = Calendar.values();
+        String expectedMonday = String.valueOf(calendar[(inputOfDay % week) - todayInclude]);
+
         Assertions.assertEquals(expectedMonday, String.valueOf(Calendar.MONDAY));
+    }
+
+    @Test
+    void 받아온_날짜_25일로_부터_크리스마스_디데이_할인_금액을_계산한다() {
+        int incrementPrice = 100;
+        int startOfChristmasBasicPrice = 1000;
+
+        int inputOfDay = 25;
+
+        int oneDayMinusMonth = 30;
+        int originMonth = 31;
+
+        int actualCalculate =
+                startOfChristmasBasicPrice + (oneDayMinusMonth * incrementPrice)
+                        - (originMonth - inputOfDay) * incrementPrice;
+
+        int expectedTestOfChristmasEventPrice = 3400;
+
+        Assertions.assertEquals(expectedTestOfChristmasEventPrice, actualCalculate);
     }
 }
