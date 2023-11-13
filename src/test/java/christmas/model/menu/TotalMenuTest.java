@@ -26,13 +26,33 @@ public class TotalMenuTest {
         Assertions.assertEquals(totalPriceAmountExpected, totalPriceAmount);
     }
 
+
+    @ParameterizedTest
+    @ArgumentsSource(MenuArgumentsProviderTwo.class)
+    void 메뉴_수량_만큼_계산(List<Menu> menus) {
+
+    }
+
     static class MenuArgumentsProvider implements ArgumentsProvider {
 
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             List<Arguments> arguments = new ArrayList<>();
-            arguments.add(arguments(List.of(new Menu("코카콜라", 3000, MenuType.BEVERAGE.name()),
-                    new Menu("타파스", 5500, MenuType.APPETIZER.name()))));
+            arguments.add(arguments(List.of(new Menu("코카콜라", 3000, MenuType.BEVERAGE.name(),
+                            3),
+                    new Menu("타파스", 5500, MenuType.APPETIZER.name(), 2))));
+            return arguments.stream();
+        }
+    }
+
+    static class MenuArgumentsProviderTwo implements ArgumentsProvider {
+
+        @Override
+        public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+            List<Arguments> arguments = new ArrayList<>();
+            arguments.add(arguments(List.of(new Menu("티본스테이크", 55000, MenuType.MAIN.name(),
+                            4),
+                    new Menu("초코케이크", 15000, MenuType.APPETIZER.name(), 3))));
             return arguments.stream();
         }
     }

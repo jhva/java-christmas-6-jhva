@@ -21,11 +21,11 @@ public class MenuTest {
         for (String menu : inputEachMenu) {
             String[] menuNameAndCount = menu.split("-");
             String menuName = menuNameAndCount[0];
-            String menuCount = menuNameAndCount[1];
+            String menuQuantity = menuNameAndCount[1];
             for (MenuType menuType : menuTypes) {
-                int count = menuType.findMenuReturnTotalAmount(menuName, Integer.parseInt(menuCount));
-                if (count > 0) {
-                    menus.add(new Menu(menuName, count, menuType.name()));
+                int totalAmount = menuType.findMenuReturnTotalAmount(menuName, Integer.parseInt(menuQuantity));
+                if (totalAmount > 0) {
+                    menus.add(new Menu(menuName, totalAmount, menuType.name(), Integer.parseInt(menuQuantity)));
                 }
             }
         }
