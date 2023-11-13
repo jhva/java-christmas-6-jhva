@@ -25,12 +25,14 @@ public enum MenuType {
         return this.getDisplayName;
     }
 
-    public boolean findMenu(String menu) {
+    public int findMenu(String menu, int quantity) {
+        int totalAmount = 0;
         for (Map<String, Integer> menuMap : menus) {
             if (menuMap.containsKey(menu)) {
-                return true;
+                int price = menuMap.get(menu);
+                totalAmount += price * quantity;
             }
         }
-        return false;
+        return totalAmount;
     }
 }

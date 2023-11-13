@@ -10,13 +10,13 @@ public class MenuTypeTest {
     void 받아온_input_으로부터_메뉴에_있는지_확인한다() {
         MenuType[] menuTypes = MenuType.values();
         String input = "아이스크림";
-        boolean isMenuFound = false;
+        int count = 0;
         for (MenuType menuType : menuTypes) {
-            isMenuFound = menuType.findMenu(input);
-            if (isMenuFound) {
+            count = menuType.findMenu(input, 4);
+            if (count == 0) {
                 break;
             }
         }
-        Assertions.assertTrue(isMenuFound);
+        Assertions.assertEquals(count, 0);
     }
 }
