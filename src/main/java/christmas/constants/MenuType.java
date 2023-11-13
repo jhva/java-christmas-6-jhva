@@ -25,7 +25,7 @@ public enum MenuType {
         return this.getDisplayName;
     }
 
-    public int findMenu(String menu, int quantity) {
+    public int findMenuReturnTotalAmount(String menu, int quantity) {
         int totalAmount = 0;
         for (Map<String, Integer> menuMap : menus) {
             if (menuMap.containsKey(menu)) {

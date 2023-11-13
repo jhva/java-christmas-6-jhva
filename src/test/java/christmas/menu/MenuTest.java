@@ -23,7 +23,7 @@ public class MenuTest {
             String menuName = menuNameAndCount[0];
             String menuCount = menuNameAndCount[1];
             for (MenuType menuType : menuTypes) {
-                int count = menuType.findMenu(menuName, Integer.parseInt(menuCount));
+                int count = menuType.findMenuReturnTotalAmount(menuName, Integer.parseInt(menuCount));
                 if (count > 0) {
                     menus.add(new Menu(menuName, count, menuType.name()));
                 }
