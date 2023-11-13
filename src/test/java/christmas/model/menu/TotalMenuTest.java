@@ -3,6 +3,7 @@ package christmas.model.menu;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 import christmas.constants.MenuType;
+import christmas.model.DiscountMenu;
 import christmas.model.Menu;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,15 @@ public class TotalMenuTest {
 
     @ParameterizedTest
     @ArgumentsSource(MenuArgumentsProviderTwo.class)
-    void 메뉴_수량_만큼_계산(List<Menu> menus) {
-
+    void 메뉴_수량_만큼_할인_계산(List<Menu> menus) {
+        List<DiscountMenu> discountMenus = new ArrayList<>();
+        for (Menu menu : menus) {
+            DiscountMenu discountMenu = new DiscountMenu(false, true, true,
+                    menu.getMenuQuantity());
+            discountMenus.add(discountMenu);
+        }
+        Assertions.assertEquals(8092, discountMenus.get(0).getWeekdayAmount());
+        Assertions.assertEquals(1000, discountMenus.get(0).getSpecialAmount());
     }
 
     static class MenuArgumentsProvider implements ArgumentsProvider {
