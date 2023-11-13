@@ -2,7 +2,7 @@ package christmas.model.menu;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-import christmas.constants.MenuType;
+import christmas.constant.MenuType;
 import christmas.model.Menu;
 import christmas.model.TotalDiscountMenu;
 import java.util.ArrayList;
