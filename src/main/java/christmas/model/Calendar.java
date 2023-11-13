@@ -20,13 +20,14 @@ public class Calendar {
         validateIsWeekDayOrIsWeekend();
     }
 
-    public void calculateToday(int day) {
+
+    private void calculateToday(int day) {
         CalendarType[] cal = CalendarType.values();
         this.calenderType = cal[(day % 7) - 1];
     }
 
 
-    public void calculateChristmasEventTotalDiscountAmount(int today) {
+    private void calculateChristmasEventTotalDiscountAmount(int today) {
         int incrementPrice = 100;
         int startOfChristmasBasicPrice = 1000;
         int oneDayMinusMonth = 30;
@@ -36,22 +37,24 @@ public class Calendar {
                         - (originMonth - today) * incrementPrice;
     }
 
-    public void validateIsWeekDayOrIsWeekend() {
+    private void validateIsWeekDayOrIsWeekend() {
         if (calenderType.equals(CalendarType.FRIDAY) || calenderType.equals(CalendarType.SATURDAY)) {
             this.isWeekend = true;
         }
         if (!calenderType.equals(CalendarType.FRIDAY) && !calenderType.equals(CalendarType.SATURDAY)) {
             this.isWeekday = true;
         }
+        if (calenderType.equals(CalendarType.SUNDAY)) {
+            this.isSpecialDay = true;
+        }
     }
-
 
     public CalendarType getToday() {
         return calenderType;
     }
 
     public int getChristmasCount() {
-        return christmasCount;
+        return this.christmasCount;
     }
 
     public boolean isWeekend() {

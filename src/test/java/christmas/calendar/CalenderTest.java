@@ -47,9 +47,10 @@ public class CalenderTest {
 
     @Test
     void 달력_생성_이후_할인을_위해_평일_혹은_주말_확인_테스트() {
-        Calendar calendar = new Calendar(23);
+        Calendar calendar = new Calendar(17);
 
-        Assertions.assertTrue(calendar.isWeekend());
-        Assertions.assertFalse(calendar.isWeekday());
+        Assertions.assertFalse(calendar.isWeekend());
+        Assertions.assertTrue(calendar.isWeekday());
+        Assertions.assertTrue(calendar.isSpecialDay());
     }
 }
