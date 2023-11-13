@@ -1,4 +1,4 @@
-package christmas.constants;
+package christmas.constant;
 
 import java.util.List;
 import java.util.Map;

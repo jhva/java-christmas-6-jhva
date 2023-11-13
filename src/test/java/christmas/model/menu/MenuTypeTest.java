@@ -1,6 +1,6 @@
 package christmas.model.menu;
 
-import christmas.constants.MenuType;
+import christmas.constant.MenuType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

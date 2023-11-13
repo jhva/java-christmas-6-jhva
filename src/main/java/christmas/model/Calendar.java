@@ -1,6 +1,6 @@
 package christmas.model;
 
-import christmas.constants.CalendarType;
+import christmas.constant.CalendarType;
 
 public class Calendar {
 

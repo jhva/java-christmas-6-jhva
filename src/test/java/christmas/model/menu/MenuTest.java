@@ -1,6 +1,6 @@
 package christmas.model.menu;
 
-import christmas.constants.MenuType;
+import christmas.constant.MenuType;
 import christmas.model.Menu;
 import java.util.ArrayList;
 import java.util.Arrays;

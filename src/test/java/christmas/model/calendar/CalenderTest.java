@@ -1,6 +1,6 @@
 package christmas.model.calendar;
 
-import christmas.constants.CalendarType;
+import christmas.constant.CalendarType;
 import christmas.model.Calendar;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
