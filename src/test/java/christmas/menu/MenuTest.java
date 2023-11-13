@@ -25,12 +25,16 @@ public class MenuTest {
             for (MenuType menuType : menuTypes) {
                 int count = menuType.findMenu(menuName, Integer.parseInt(menuCount));
                 if (count > 0) {
-                    menus.add(new Menu(menuName, count, menuType));
+                    menus.add(new Menu(menuName, count, menuType.name()));
                 }
             }
         }
+        int TAPAS_PRICE = 5500;
+        int ZERO_COLA_PRICE = 3000;
         Assertions.assertEquals(menus.size(), 2);
-        Assertions.assertEquals(menus.get(0).getMenuPrice(), 5500);
-        Assertions.assertEquals(menus.get(1).getMenuPrice(), 3000);
+        Assertions.assertEquals(menus.get(0).getMenuPrice(), TAPAS_PRICE);
+        Assertions.assertEquals(menus.get(0).getMenuType(), MenuType.APPETIZER.name());
+        Assertions.assertEquals(menus.get(1).getMenuType(), MenuType.BEVERAGE.name());
+        Assertions.assertEquals(menus.get(1).getMenuPrice(), ZERO_COLA_PRICE);
     }
 }
