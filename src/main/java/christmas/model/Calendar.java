@@ -8,7 +8,7 @@ public class Calendar {
 
     private boolean isWeekday;
 
-    private boolean isSpecialDay;
+    private boolean isSpecial;
 
     private int christmasCount;
 
@@ -26,7 +26,6 @@ public class Calendar {
         this.calenderType = cal[(day % 7) - 1];
     }
 
-
     private void calculateChristmasEventTotalDiscountAmount(int today) {
         int incrementPrice = 100;
         int startOfChristmasBasicPrice = 1000;
@@ -41,12 +40,10 @@ public class Calendar {
         if (calenderType.equals(CalendarType.FRIDAY) || calenderType.equals(CalendarType.SATURDAY)) {
             this.isWeekend = true;
         }
-        if (!calenderType.equals(CalendarType.FRIDAY) && !calenderType.equals(CalendarType.SATURDAY)) {
-            this.isWeekday = true;
-        }
         if (calenderType.equals(CalendarType.SUNDAY)) {
-            this.isSpecialDay = true;
+            this.isSpecial = true;
         }
+        this.isWeekday = true;
     }
 
     public CalendarType getToday() {
@@ -66,6 +63,6 @@ public class Calendar {
     }
 
     public boolean isSpecialDay() {
-        return this.isSpecialDay;
+        return this.isSpecial;
     }
 }
