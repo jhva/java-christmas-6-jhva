@@ -1,4 +1,4 @@
-package christmas.calendar;
+package christmas.model.calendar;
 
 import christmas.constants.CalendarType;
 import christmas.model.Calendar;

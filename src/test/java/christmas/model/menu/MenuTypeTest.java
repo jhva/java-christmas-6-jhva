@@ -1,4 +1,4 @@
-package christmas.menu;
+package christmas.model.menu;
 
 import christmas.constants.MenuType;
 import org.junit.jupiter.api.Assertions;

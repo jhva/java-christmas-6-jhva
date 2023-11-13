@@ -1,4 +1,4 @@
-package christmas.menu;
+package christmas.model.menu;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
