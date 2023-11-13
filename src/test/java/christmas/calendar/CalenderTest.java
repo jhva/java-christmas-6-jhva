@@ -44,4 +44,12 @@ public class CalenderTest {
 
         Assertions.assertEquals(calendar.getToday().name(), CalendarType.TUESDAY.name());
     }
+
+    @Test
+    void 달력_생성_이후_할인을_위해_평일_혹은_주말_확인_테스트() {
+        Calendar calendar = new Calendar(23);
+
+        Assertions.assertTrue(calendar.isWeekend());
+        Assertions.assertFalse(calendar.isWeekday());
+    }
 }
