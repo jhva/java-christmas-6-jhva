@@ -4,19 +4,20 @@ import christmas.constants.CalendarType;
 
 public class Calendar {
 
-    private boolean weekend;
+    private boolean isWeekend;
 
-    private boolean weekday;
+    private boolean isWeekday;
 
-    private boolean specialDay;
+    private boolean isSpecialDay;
+
+    private int christmasCount;
 
     private CalendarType calenderType;
 
     public Calendar(int day) {
         calculateToday(day);
-        isWeekday(day);
-        isWeekend(day);
-        isSpecialDay(day);
+        calculateChristmasEventTotalDiscountAmount(day);
+        validateIsWeekDayOrIsWeekend();
     }
 
     public void calculateToday(int day) {
@@ -24,16 +25,44 @@ public class Calendar {
         this.calenderType = cal[(day % 7) - 1];
     }
 
+
+    public void calculateChristmasEventTotalDiscountAmount(int today) {
+        int incrementPrice = 100;
+        int startOfChristmasBasicPrice = 1000;
+        int oneDayMinusMonth = 30;
+        int originMonth = 31;
+        this.christmasCount =
+                startOfChristmasBasicPrice + (oneDayMinusMonth * incrementPrice)
+                        - (originMonth - today) * incrementPrice;
+    }
+
+    public void validateIsWeekDayOrIsWeekend() {
+        if (calenderType.equals(CalendarType.FRIDAY) || calenderType.equals(CalendarType.SATURDAY)) {
+            this.isWeekend = true;
+        }
+        if (!calenderType.equals(CalendarType.FRIDAY) && !calenderType.equals(CalendarType.SATURDAY)) {
+            this.isWeekday = true;
+        }
+    }
+
+
     public CalendarType getToday() {
         return calenderType;
     }
 
-    public void isWeekend(int day) {
+    public int getChristmasCount() {
+        return christmasCount;
     }
 
-    public void isWeekday(int day) {
+    public boolean isWeekend() {
+        return this.isWeekend;
     }
 
-    public void isSpecialDay(int day) {
+    public boolean isWeekday() {
+        return this.isWeekday;
+    }
+
+    public boolean isSpecialDay() {
+        return this.isSpecialDay;
     }
 }
