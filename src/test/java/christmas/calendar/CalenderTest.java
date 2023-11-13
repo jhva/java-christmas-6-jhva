@@ -1,6 +1,7 @@
 package christmas.calendar;
 
 import christmas.constants.CalendarType;
+import christmas.model.Calendar;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -35,5 +36,12 @@ public class CalenderTest {
         int expectedTestOfChristmasEventPrice = 3400;
 
         Assertions.assertEquals(expectedTestOfChristmasEventPrice, actualCalculate);
+    }
+
+    @Test
+    void 달력_생성_후_요일_확인_테스트() {
+        Calendar calendar = new Calendar(26);
+
+        Assertions.assertEquals(calendar.getToday().name(), CalendarType.TUESDAY.name());
     }
 }
