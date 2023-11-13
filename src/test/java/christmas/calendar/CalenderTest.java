@@ -1,6 +1,6 @@
 package christmas.calendar;
 
-import christmas.constants.Calendar;
+import christmas.constants.CalendarType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,10 +12,10 @@ public class CalenderTest {
         int week = 7;
         int todayInclude = 1;
 
-        Calendar[] calendar = Calendar.values();
+        CalendarType[] calendar = CalendarType.values();
         String expectedMonday = String.valueOf(calendar[(inputOfDay % week) - todayInclude]);
 
-        Assertions.assertEquals(expectedMonday, String.valueOf(Calendar.MONDAY));
+        Assertions.assertEquals(expectedMonday, String.valueOf(CalendarType.MONDAY));
     }
 
     @Test
