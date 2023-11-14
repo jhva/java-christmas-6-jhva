@@ -16,4 +16,6 @@ public class ChristmasConst {
     public static final String NOTHING_MSG = "없음";
     public static final String WON = "%s 원";
     public static final String DISCOUNT_WON = "-%s 원";
+    public static final String COMMA = ",";
+    public static final String BAR = "-";
 }
