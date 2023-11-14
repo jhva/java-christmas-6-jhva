@@ -1,5 +1,8 @@
 package christmas.model;
 
+import christmas.constant.MenuType;
+import java.util.Objects;
+
 public class TotalDiscountMenu {
 
     private int totalDiscountAmount;
@@ -10,17 +13,18 @@ public class TotalDiscountMenu {
 
     private int specialAmount;
 
-    private int presentationAmount = 0;
+    private int presentationAmount;
 
-    public TotalDiscountMenu(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity, boolean isGiven) {
-        calculateDiscount(isWeekend, isWeekday, isSpecial, quantity);
+    public TotalDiscountMenu(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity, boolean isGiven,
+            String menuType) {
+        calculateDiscount(isWeekend, isWeekday, isSpecial, quantity, menuType);
         calculateTotalDiscount();
         calculateIsPresentation(isGiven);
     }
 
     public void calculateIsPresentation(boolean isPresentation) {
         if (isPresentation) {
-            presentationAmount = 250000;
+            presentationAmount = 25000;
         }
     }
 
@@ -28,12 +32,13 @@ public class TotalDiscountMenu {
         totalDiscountAmount = weekdayAmount + weekendAmount + specialAmount + presentationAmount;
     }
 
-    public void calculateDiscount(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity) {
-        if (isWeekday) {
-            this.weekdayAmount = quantity * 2023;
+    public void calculateDiscount(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity,
+            String menuType) {
+        if (isWeekday && Objects.equals(menuType, MenuType.DESSERT.name())) {
+            this.weekdayAmount += quantity * 2023;
         }
-        if (isWeekend) {
-            this.weekendAmount = quantity * 2023;
+        if (isWeekend && Objects.equals(menuType, MenuType.MAIN.name())) {
+            this.weekendAmount += quantity * 2023;
         }
         if (isSpecial) {
             this.specialAmount = 1000;
