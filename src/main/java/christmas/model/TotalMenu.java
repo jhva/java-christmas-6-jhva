@@ -18,8 +18,8 @@ public class TotalMenu {
         return formatPrice(menuDto.stream().mapToInt(MenuDto::menuPrice).sum());
     }
 
-    public boolean isTotalAmountSufficient(int totalPrice) {
-        return totalPrice >= 120000;
+    public boolean isTotalAmountSufficient(String totalPrice) {
+        return Integer.parseInt(totalPrice) >= 120000;
     }
 
     public List<MenuDto> getMenu() {
