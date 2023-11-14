@@ -12,7 +12,7 @@ public record ChristmasBenefitsDetails(List<ChristmasBenefits> benefits) {
                 .sum();
     }
 
-    public List<ChristmasBenefits> benefits() {
+    public List<ChristmasBenefits> getBenefits() {
         return Collections.unmodifiableList(benefits);
     }
 }
