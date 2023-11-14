@@ -8,6 +8,7 @@ import static christmas.constant.ChristmasConst.EVENT_BADGE_MSG;
 import static christmas.constant.ChristmasConst.EVENT_BENEFITS_MSG;
 import static christmas.constant.ChristmasConst.GIVEAWAY_MENU_MSG;
 import static christmas.constant.ChristmasConst.MENU_VIEW_MSG;
+import static christmas.constant.ChristmasConst.NOTHING_MSG;
 import static christmas.constant.ChristmasConst.SELECT_MENU_NAME_QUANTITY;
 import static christmas.constant.ChristmasConst.START_MSG;
 import static christmas.constant.ChristmasConst.TOTAL_AMOUNT_AFTER_DISCOUNT_MSG;
@@ -43,6 +44,10 @@ public class OutView {
     public void beforeOrderingMsg() {
         System.out.println(EVENT_BENEFITS_MSG);
         System.out.println(BEFORE_ORDER_MSG);
+    }
+
+    public void nothingMsg() {
+        System.out.println(NOTHING_MSG);
     }
 
     public void totalOrderAmountBeforeDiscountMsg() {
