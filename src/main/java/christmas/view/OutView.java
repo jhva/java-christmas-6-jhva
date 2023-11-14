@@ -7,6 +7,7 @@ import static christmas.constant.ChristmasConst.EVENT_BADGE_MSG;
 import static christmas.constant.ChristmasConst.EVENT_BENEFITS_MSG;
 import static christmas.constant.ChristmasConst.GIVEAWAY_MENU_MSG;
 import static christmas.constant.ChristmasConst.MENU_VIEW_MSG;
+import static christmas.constant.ChristmasConst.SELECT_MENU_NAME_QUANTITY;
 import static christmas.constant.ChristmasConst.START_MSG;
 import static christmas.constant.ChristmasConst.TOTAL_AMOUNT_AFTER_DISCOUNT_MSG;
 import static christmas.constant.ChristmasConst.TOTAL_BENEFITS_AMOUNT_MSG;
@@ -22,9 +23,13 @@ public class OutView {
         System.out.println(MENU_VIEW_MSG);
     }
 
+    public void selectedMenuMsg(String menuName, int menuQuantity) {
+        String selectMenu = String.format(SELECT_MENU_NAME_QUANTITY, menuName, menuQuantity);
+        System.out.println(selectMenu);
+    }
+
     public void beforeOrderingMsg() {
         System.out.println(EVENT_BENEFITS_MSG);
-        System.out.println();
         System.out.println(BEFORE_ORDER_MSG);
     }
 
