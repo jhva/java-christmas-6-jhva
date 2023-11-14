@@ -17,7 +17,7 @@ public class Calendar {
     public Calendar(int day) {
         calculateToday(day);
         calculateChristmasEventTotalDiscountAmount(day);
-        validateIsWeekDayOrIsWeekend();
+        validateIsWeekDayOrIsWeekend(day);
     }
 
 
@@ -36,11 +36,11 @@ public class Calendar {
                         - (originMonth - today) * incrementPrice;
     }
 
-    private void validateIsWeekDayOrIsWeekend() {
+    private void validateIsWeekDayOrIsWeekend(int day) {
         if (calenderType.equals(CalendarType.FRIDAY) || calenderType.equals(CalendarType.SATURDAY)) {
             this.isWeekend = true;
         }
-        if (calenderType.equals(CalendarType.SUNDAY)) {
+        if (calenderType.equals(CalendarType.SUNDAY) && day == 25) {
             this.isSpecial = true;
         }
         this.isWeekday = true;
