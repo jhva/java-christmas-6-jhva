@@ -12,9 +12,10 @@ public class TotalDiscountMenu {
 
     private int presentationAmount = 0;
 
-    public TotalDiscountMenu(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity) {
+    public TotalDiscountMenu(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity, boolean isGiven) {
         calculateDiscount(isWeekend, isWeekday, isSpecial, quantity);
         calculateTotalDiscount();
+        calculateIsPresentation(isGiven);
     }
 
     public void calculateIsPresentation(boolean isPresentation) {
