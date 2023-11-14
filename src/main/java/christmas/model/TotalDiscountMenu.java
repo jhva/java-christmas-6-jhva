@@ -10,7 +10,7 @@ public class TotalDiscountMenu {
 
     private int specialAmount;
 
-    private int presentationAmount;
+    private int presentationAmount = 0;
 
     public TotalDiscountMenu(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity) {
         calculateDiscount(isWeekend, isWeekday, isSpecial, quantity);
@@ -38,6 +38,10 @@ public class TotalDiscountMenu {
         if (isSpecial) {
             this.specialAmount = 1000;
         }
+    }
+
+    public int getPresentationAmount() {
+        return presentationAmount;
     }
 
     public int getTotalDiscountAmount() {
