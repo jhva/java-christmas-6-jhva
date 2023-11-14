@@ -34,7 +34,7 @@ public class TotalMenuTest {
         List<TotalDiscountMenu> discountMenus = new ArrayList<>();
         for (Menu menu : menus) {
             TotalDiscountMenu discountMenu = new TotalDiscountMenu(false, true, true,
-                    menu.getMenuQuantity());
+                    menu.getMenuQuantity(), false);
             discountMenus.add(discountMenu);
         }
         Assertions.assertEquals(8092, discountMenus.get(0).getWeekdayAmount());
