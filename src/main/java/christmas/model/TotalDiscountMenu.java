@@ -5,6 +5,9 @@ import java.util.Objects;
 
 public class TotalDiscountMenu {
 
+    private static final int COMMON_CHRISTMAS_DISCOUNT = 2023;
+    private static final int DEFAULT_CHAMPAGNE_AMOUNT = 25000;
+    private static final int DEFAULT_SPECIAL_AMOUNT = 1000;
     private int totalDiscountAmount;
 
     private int weekdayAmount;
@@ -15,6 +18,7 @@ public class TotalDiscountMenu {
 
     private int presentationAmount;
 
+
     public TotalDiscountMenu(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity, boolean isGiven,
             String menuType) {
         calculateDiscount(isWeekend, isWeekday, isSpecial, quantity, menuType);
@@ -24,7 +28,7 @@ public class TotalDiscountMenu {
 
     public void calculateIsPresentation(boolean isPresentation) {
         if (isPresentation) {
-            presentationAmount = 25000;
+            presentationAmount = DEFAULT_CHAMPAGNE_AMOUNT;
         }
     }
 
@@ -35,13 +39,13 @@ public class TotalDiscountMenu {
     public void calculateDiscount(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity,
             String menuType) {
         if (isWeekday && Objects.equals(menuType, MenuType.DESSERT.name())) {
-            this.weekdayAmount += quantity * 2023;
+            this.weekdayAmount += quantity * COMMON_CHRISTMAS_DISCOUNT;
         }
         if (isWeekend && Objects.equals(menuType, MenuType.MAIN.name())) {
-            this.weekendAmount += quantity * 2023;
+            this.weekendAmount += quantity * COMMON_CHRISTMAS_DISCOUNT;
         }
         if (isSpecial) {
-            this.specialAmount = 1000;
+            this.specialAmount = DEFAULT_SPECIAL_AMOUNT;
         }
     }
 
