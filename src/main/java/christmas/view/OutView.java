@@ -14,8 +14,11 @@ import static christmas.constant.ChristmasConst.TOTAL_BENEFITS_AMOUNT_MSG;
 
 public class OutView {
 
-    public OutView() {
+    public void starterViewMsg() {
         System.out.println(START_MSG);
+    }
+
+    public void menuViewMsg() {
         System.out.println(MENU_VIEW_MSG);
     }
 
