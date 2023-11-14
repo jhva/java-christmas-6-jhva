@@ -3,6 +3,7 @@ package christmas.view;
 import static christmas.constant.ChristmasConst.BEFORE_DISCOUNT_MSG;
 import static christmas.constant.ChristmasConst.BEFORE_ORDER_MSG;
 import static christmas.constant.ChristmasConst.BENEFITS_DETAILS_MSG;
+import static christmas.constant.ChristmasConst.DISCOUNT_WON;
 import static christmas.constant.ChristmasConst.EVENT_BADGE_MSG;
 import static christmas.constant.ChristmasConst.EVENT_BENEFITS_MSG;
 import static christmas.constant.ChristmasConst.GIVEAWAY_MENU_MSG;
@@ -11,6 +12,7 @@ import static christmas.constant.ChristmasConst.SELECT_MENU_NAME_QUANTITY;
 import static christmas.constant.ChristmasConst.START_MSG;
 import static christmas.constant.ChristmasConst.TOTAL_AMOUNT_AFTER_DISCOUNT_MSG;
 import static christmas.constant.ChristmasConst.TOTAL_BENEFITS_AMOUNT_MSG;
+import static christmas.constant.ChristmasConst.WON;
 
 
 public class OutView {
@@ -26,6 +28,16 @@ public class OutView {
     public void selectedMenuMsg(String menuName, int menuQuantity) {
         String selectMenu = String.format(SELECT_MENU_NAME_QUANTITY, menuName, menuQuantity);
         System.out.println(selectMenu);
+    }
+
+    public void numberTotalPriceFormatWonMsg(String price) {
+        String msg = String.format(WON, price);
+        System.out.println(msg);
+    }
+
+    public void discountPriceFormatMsg(int price) {
+        String msg = String.format(DISCOUNT_WON, price);
+        System.out.println(msg);
     }
 
     public void beforeOrderingMsg() {
