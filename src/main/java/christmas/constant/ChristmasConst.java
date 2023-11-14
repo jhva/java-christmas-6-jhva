@@ -15,8 +15,14 @@ public class ChristmasConst {
     public static final String EVENT_BADGE_MSG = "<12월 이벤트 배지>";
     public static final String NOTHING_MSG = "없음";
     public static final String SELECT_MENU_NAME_QUANTITY = "%s %d개";
-    public static final String WON = "%s 원";
-    public static final String DISCOUNT_WON = "-%s 원";
+    public static final String WON = "%s원";
+    public static final String DISCOUNT_WON = "-%s원";
+    public static final String CHRISTMAS_TODAY_DISCOUNT = "크리스마스 디데이 할인: -%s원";
+    public static final String WEEKDAY_DISCOUNT = "평일 할인: -%s원";
+    public static final String WEEKEND_DISCOUNT = "주말 할인: -%s원";
+    public static final String SPECIAL_DISCOUNT = "특별 할인: -%s원";
     public static final String COMMA = ",";
     public static final String BAR = "-";
+    public static final int TARGET_ZERO = 0;
+    public static final int DEFAULT_CHAMPAGNE_AMOUNT = 25000;
 }
