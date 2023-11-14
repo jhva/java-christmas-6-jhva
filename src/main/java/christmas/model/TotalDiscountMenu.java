@@ -15,17 +15,16 @@ public class TotalDiscountMenu {
     public TotalDiscountMenu(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity) {
         calculateDiscount(isWeekend, isWeekday, isSpecial, quantity);
         calculateTotalDiscount();
-        calculateIsPresentation();
     }
 
-    private void calculateIsPresentation() {
-        if (totalDiscountAmount >= 120000) {
-            presentationAmount = 25000;
+    public void calculateIsPresentation(boolean isPresentation) {
+        if (isPresentation) {
+            presentationAmount = 250000;
         }
     }
 
     private void calculateTotalDiscount() {
-        totalDiscountAmount = weekdayAmount + weekendAmount + specialAmount;
+        totalDiscountAmount = weekdayAmount + weekendAmount + specialAmount + presentationAmount;
     }
 
     public void calculateDiscount(boolean isWeekend, boolean isWeekday, boolean isSpecial, int quantity) {
