@@ -34,4 +34,5 @@ public class ChristmasConst {
     public static final int CHRISTMAS_DAY = 25;
     public static final int TARGET_ZERO = 0;
     public static final int DEFAULT_CHAMPAGNE_AMOUNT = 25000;
+    public static final int TOTAL가_MENU_SIZE = 20;
 }
