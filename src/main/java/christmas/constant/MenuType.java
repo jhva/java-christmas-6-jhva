@@ -1,5 +1,9 @@
 package christmas.constant;
 
+import static christmas.exception.Validator.validatorQuantity;
+
+import christmas.exception.ErrorMsg;
+import christmas.exception.UserInputException;
 import java.util.List;
 import java.util.Map;
 
@@ -28,11 +32,20 @@ public enum MenuType {
     public int findMenuReturnTotalAmount(String menu, int quantity) {
         int totalAmount = 0;
         for (Map<String, Integer> menuMap : menus) {
+            validatorQuantity(String.valueOf(quantity));
+            validateMenuAndQuantityCheck(menuMap, menu, quantity);
             if (menuMap.containsKey(menu)) {
                 int price = menuMap.get(menu);
                 totalAmount += price * quantity;
             }
+
         }
         return totalAmount;
+    }
+
+    void validateMenuAndQuantityCheck(Map<String, Integer> menuMap, String menu, int quantity) {
+        if (quantity < 0 || quantity > 20) {
+            throw new UserInputException(ErrorMsg.ERROR_NOT_MENU.getMsg());
+        }
     }
 }
