@@ -1,6 +1,5 @@
 package christmas;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -21,12 +20,32 @@ public class ExceptionTest extends NsTest {
     }
 
     @Test
-    void 날짜_다시_입력_받는_여지_테스트() {
-        assertSimpleTest(() -> {
-            runException("27");
-            assertThat(output()).contains("26일 이후 부터는 크리스마스 혜택을 받을 수 없습니다. 진행하시겠습니까?\n1.계속 2.돌아가기");
+    void 메뉴_테스트() {
+        assertThatThrownBy(() -> {
+            runException("12,ㅁㄴㅇㄹ-1,ㅁㄴㅇ3");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.")
+                    .isInstanceOf(UserInputException.class);
         });
     }
+
+    @Test
+    void 메뉴_중복_테스트() {
+        assertThatThrownBy(() -> {
+            runException("티본스테이크-1,티본스테이크-1");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.")
+                    .isInstanceOf(UserInputException.class);
+        });
+    }
+
+    @Test
+    void 메뉴_개수_테스트() {
+        assertThatThrownBy(() -> {
+            runException("12,티본스테이크-23");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.")
+                    .isInstanceOf(UserInputException.class);
+        });
+    }
+
 
     @Override
     protected void runMain() {
