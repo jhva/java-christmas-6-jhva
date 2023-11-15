@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import static christmas.constant.ChristmasConst.DEFAULT_CHAMPAGNE_AMOUNT;
+import static christmas.constant.ChristmasConst.TARGET_ZERO;
 import static christmas.exception.Validator.validateMenuCheckReturnMenu;
 import static christmas.utils.ChristmasAppUtils.formatPrice;
 
@@ -86,7 +87,7 @@ public class ChristmasEventController {
     private void totalDiscountMenuCheck(ChristmasBenefitsDetails benefitsDetails, int christmasDiscount) {
         List<ChristmasBenefits> benefits = benefitsDetails.getBenefits();
         outView.benefitsDetailsMsg();
-        if (benefits.size() == 0) {
+        if (benefits.size() == TARGET_ZERO) {
             outView.nothingMsg();
         }
         for (ChristmasBenefits benefit : benefitsDetails.getBenefits()) {
