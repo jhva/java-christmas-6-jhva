@@ -1,9 +1,8 @@
 package christmas.controller;
 
-import static christmas.constant.ChristmasConst.COMMA;
 import static christmas.constant.ChristmasConst.DEFAULT_CHAMPAGNE_AMOUNT;
+import static christmas.exception.Validator.validateMenuCheckReturnMenu;
 import static christmas.utils.ChristmasAppUtils.formatPrice;
-import static christmas.utils.ChristmasAppUtils.splitByRegex;
 
 import christmas.constant.ChristmasBenefits;
 import christmas.dto.CalendarDto;
@@ -43,9 +42,8 @@ public class ChristmasEventController {
 
     private TotalMenu menuSelector() {
         outView.menuViewMsg();
-        String menu = inputView.commonMenuInput();
-        String[] menuParseWithRegex = splitByRegex(menu, COMMA);
-        List<MenuDto> menuDto = christmasEventService.createMenu(menuParseWithRegex);
+        String[] menu = validateMenuCheckReturnMenu(inputView.commonMenuInput());
+        List<MenuDto> menuDto = christmasEventService.createMenu(menu);
         return new TotalMenu(menuDto);
     }
 
@@ -53,9 +51,7 @@ public class ChristmasEventController {
         outView.starterViewMsg();
         int day = inputView.commonIntegerInput();
         Calendar calendar = new Calendar(day);
-        CalendarDto calendarDto = CalendarDto.fromCalendar(calendar);
-        christmasEventService.confirmCalendar(calendarDto); //예외 ?
-        return calendarDto;
+        return CalendarDto.fromCalendar(calendar);
     }
 
 
