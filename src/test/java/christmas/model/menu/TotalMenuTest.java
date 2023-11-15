@@ -33,11 +33,11 @@ public class TotalMenuTest {
     void 메뉴_수량_만큼_할인_계산(List<Menu> menus) {
         List<TotalDiscountMenu> discountMenus = new ArrayList<>();
         for (Menu menu : menus) {
-            TotalDiscountMenu discountMenu = new TotalDiscountMenu(false, true, true,
+            TotalDiscountMenu discountMenu = new TotalDiscountMenu(true, true, true,
                     menu.getMenuQuantity(), false, menu.getMenuType());
             discountMenus.add(discountMenu);
         }
-        Assertions.assertEquals(8092, discountMenus.get(0).getWeekdayAmount());
+        Assertions.assertEquals(8092, discountMenus.get(0).getWeekendAmount());
         Assertions.assertEquals(1000, discountMenus.get(0).getSpecialAmount());
     }
 
