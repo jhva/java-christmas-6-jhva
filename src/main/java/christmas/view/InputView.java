@@ -14,7 +14,7 @@ public class InputView {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            System.out.println(ErrorMsg.ERROR_NOT_NUMBER.getMsg());
+            System.out.println(ErrorMsg.ERROR_NOT_DATE.getMsg());
         }
         return Integer.parseInt(Console.readLine());
     }
