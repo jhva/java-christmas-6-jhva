@@ -63,16 +63,16 @@ public class ChristmasEventService {
         for (MenuDto menus : menu.getMenu()) {
             discountMenu = new TotalDiscountMenu(calendar.isWeekend(), calendar.isWeekday(), calendar.isSpecial(),
                     menus.menuQuantity(), isGivenChampagne, menus.menuType());
-            validatorBenfits(discountMenu, isGivenChampagne, allBenefits);
+            validatorBenfits(discountMenu, isGivenChampagne, allBenefits, calendar.christmasCount());
         }
         return allBenefits;
     }
 
     public void validatorBenfits(TotalDiscountMenu totalDiscountMenu, boolean isGivenChampagne,
-            List<ChristmasBenefits> allBenefits) {
+            List<ChristmasBenefits> allBenefits, int christmasDiscount) {
         ChristmasBenefits[] benefitsValue = ChristmasBenefits.values();
         for (ChristmasBenefits befits : benefitsValue) {
-            befits.updateDiscountCounters(totalDiscountMenu);
+            befits.updateDiscountCounters(totalDiscountMenu, christmasDiscount);
             if (befits.getCounter() > 0 && !allBenefits.contains(befits)) {
                 allBenefits.add(befits);
             }
