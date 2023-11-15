@@ -2,12 +2,14 @@ package christmas.service;
 
 import static christmas.constant.ChristmasConst.BAR;
 import static christmas.constant.ChristmasConst.TARGET_ZERO;
+import static christmas.constant.ChristmasConst.TOTAL_MENU_SIZE;
 import static christmas.exception.Validator.validateMenuContains;
 
 import christmas.constant.ChristmasBenefits;
 import christmas.constant.MenuType;
 import christmas.dto.CalendarDto;
 import christmas.dto.MenuDto;
+import christmas.exception.ErrorMsg;
 import christmas.exception.UserInputException;
 import christmas.model.Menu;
 import christmas.model.TotalDiscountMenu;
@@ -15,6 +17,7 @@ import christmas.model.TotalMenu;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class ChristmasEventService {
@@ -65,7 +68,28 @@ public class ChristmasEventService {
             MenuDto menuDto = MenuDto.fromMenu(menu);
             menuDtos.add(menuDto);
         }
+        validTotalQuantityToTwenty(menuDtos);
+        validateOrder(menuDtos);
         return menuDtos;
+    }
+
+    public void validTotalQuantityToTwenty(List<MenuDto> menuDtos) {
+        int totalQuantity = menuDtos.stream()
+                .mapToInt(MenuDto::menuQuantity)
+                .sum();
+        if (totalQuantity > TOTAL_MENU_SIZE) {
+            throw new UserInputException(ErrorMsg.ERROR_NOT_MENU_SIZE.getMsg());
+        }
+    }
+
+    public void validateOrder(List<MenuDto> menuDtos) {
+        int drinkCount = (int) menuDtos.stream()
+                .filter(menuDto -> Objects.equals(menuDto.menuType(), MenuType.BEVERAGE.name()))
+                .count();
+        int nonDrinkCount = menuDtos.size() - drinkCount;
+        if (drinkCount > TARGET_ZERO && nonDrinkCount == TARGET_ZERO) {
+            throw new UserInputException(ErrorMsg.ERROR_NOT_DRINK.getMsg());
+        }
     }
 
     public List<ChristmasBenefits> finderOfTotalMenuFromDiscount(CalendarDto calendar, TotalMenu menu,
