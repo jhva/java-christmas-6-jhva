@@ -9,13 +9,10 @@ public class Validator {
 
     private static final int MAX_DAY = 31;
 
-    public static int validateDay(int day) {
+    public static int validateDay(int day) throws UserInputException {
         while (day <= 0 || day > MAX_DAY) {
-            try {
-                day = Integer.parseInt(Console.readLine());
-            } catch (UserInputException ex) {
-                printException(ErrorMsg.ERROR_NOT_DATE.getMsg());
-            }
+            printException(ErrorMsg.ERROR_NOT_DATE.getMsg());
+            day = Integer.parseInt(Console.readLine());
         }
         return day;
     }
