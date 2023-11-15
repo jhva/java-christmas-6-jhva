@@ -1,10 +1,21 @@
 package christmas.model;
 
+import static christmas.constant.ChristmasConst.CHRISTMAS_DAY;
+import static christmas.constant.ChristmasConst.CHRISTMAS_DAY_AFTER_NOT_DISCOUNT;
+import static christmas.constant.ChristmasConst.CHRISTMAS_MAX_DISCOUNT;
+import static christmas.constant.ChristmasConst.INCREMENT_PRICE;
+import static christmas.constant.ChristmasConst.ONE_DAY_MINUS_MONTH;
+import static christmas.constant.ChristmasConst.ORIGIN_MONTH;
+import static christmas.constant.ChristmasConst.START_OF_CHRISTMAS_BASIC_PRICE;
+import static christmas.constant.ChristmasConst.TODAY;
+import static christmas.constant.ChristmasConst.WEEK;
+import static christmas.exception.Validator.validateDay;
+
 import christmas.constant.CalendarType;
 
 public class Calendar {
 
-    private boolean isWeekend;
+    private static boolean isWeekend;
 
     private boolean isWeekday;
 
@@ -15,39 +26,36 @@ public class Calendar {
     private CalendarType calenderType;
 
     public Calendar(int day) {
-        calculateToday(day);
-        calculateChristmasEventTotalDiscountAmount(day);
-        validateIsWeekDayOrIsWeekend(day);
+        int validateDay = validateDay(day);
+        calculateToday(validateDay);
+        calculateChristmasEventTotalDiscountAmount(validateDay);
+        validateIsWeekDayOrIsWeekend(validateDay);
         validChristmasDiscount();
     }
 
 
     private void calculateToday(int day) {
         CalendarType[] cal = CalendarType.values();
-        this.calenderType = cal[(day % 7) - 1];
+        this.calenderType = cal[(day % WEEK) - TODAY];
     }
 
     private void calculateChristmasEventTotalDiscountAmount(int today) {
-        int incrementPrice = 100;
-        int startOfChristmasBasicPrice = 1000;
-        int oneDayMinusMonth = 30;
-        int originMonth = 31;
         this.christmasCount =
-                startOfChristmasBasicPrice + (oneDayMinusMonth * incrementPrice)
-                        - (originMonth - today) * incrementPrice;
+                START_OF_CHRISTMAS_BASIC_PRICE + (ONE_DAY_MINUS_MONTH * INCREMENT_PRICE)
+                        - (ORIGIN_MONTH - today) * INCREMENT_PRICE;
     }
 
     private void validChristmasDiscount() {
-        if (this.christmasCount >= 3500) {
-            christmasCount = 0;
+        if (this.christmasCount >= CHRISTMAS_MAX_DISCOUNT) {
+            christmasCount = CHRISTMAS_DAY_AFTER_NOT_DISCOUNT;
         }
     }
 
     private void validateIsWeekDayOrIsWeekend(int day) {
         if (calenderType.equals(CalendarType.FRIDAY) || calenderType.equals(CalendarType.SATURDAY)) {
-            this.isWeekend = true;
+            isWeekend = true;
         }
-        if (calenderType.equals(CalendarType.SUNDAY) || day == 25) {
+        if (calenderType.equals(CalendarType.SUNDAY) || day == CHRISTMAS_DAY) {
             this.isSpecial = true;
         }
         this.isWeekday = true;

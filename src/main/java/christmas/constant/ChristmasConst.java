@@ -23,6 +23,15 @@ public class ChristmasConst {
     public static final String SPECIAL_DISCOUNT = "특별 할인: -%s원";
     public static final String COMMA = ",";
     public static final String BAR = "-";
+    public static final int INCREMENT_PRICE = 100;
+    public static final int START_OF_CHRISTMAS_BASIC_PRICE = 1000;
+    public static final int ONE_DAY_MINUS_MONTH = 30;
+    public static final int ORIGIN_MONTH = 31;
+    public static final int WEEK = 7;
+    public static final int TODAY = 1;
+    public static final int CHRISTMAS_MAX_DISCOUNT = 3500;
+    public static final int CHRISTMAS_DAY_AFTER_NOT_DISCOUNT = 0;
+    public static final int CHRISTMAS_DAY = 25;
     public static final int TARGET_ZERO = 0;
     public static final int DEFAULT_CHAMPAGNE_AMOUNT = 25000;
 }
