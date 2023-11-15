@@ -28,6 +28,10 @@ public class OutView {
 
     private static final int QUANTITY = 1;
 
+    public static void printException(String msg) {
+        System.out.println(msg);
+    }
+
     public void starterViewMsg() {
         System.out.println(START_MSG);
     }
