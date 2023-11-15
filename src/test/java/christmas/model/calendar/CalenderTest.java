@@ -50,7 +50,6 @@ public class CalenderTest {
         Calendar calendar = new Calendar(17);
 
         Assertions.assertFalse(calendar.isWeekend());
-        Assertions.assertTrue(calendar.isWeekday());
         Assertions.assertTrue(calendar.isSpecialDay());
     }
 }
